@@ -1,16 +1,24 @@
+[![BuyMeACoffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://buymeacoffee.com/devthantziq)
+
 # flutter_extensions_demo
+# 🚀 10 Powerful Flutter Extensions Every Pro Developer Should Know
 
-A new Flutter project.
+A simple Flutter demo project showcasing 11 powerful widget extensions that make your UI code clean, readable, and professional. 
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## Overview
 
-A few resources to get you started if this is your first Flutter project:
+Flutter’s widget tree can quickly get messy when you add multiple layouts, paddings, gestures, and alignments.  
+This project demonstrates how to use **extension methods** to simplify widget composition, keeping your code elegant and maintainable.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📄 License
+
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
+
+
+## ❤️ Support
+
+Hi 👋 If you find this is useful, you can [buy me a coffee](https://buymeacoffee.com/devthantziq) ☕ to support my work and make my sleepless nights easier.
