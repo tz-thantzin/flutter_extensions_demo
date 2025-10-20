@@ -3,7 +3,7 @@
 # flutter_extensions_demo
 # 🚀 10 Powerful Flutter Extensions Every Pro Developer Should Know
 
-A simple Flutter demo project showcasing 11 powerful widget extensions that make your UI code clean, readable, and professional. 
+A simple Flutter demo project showcasing 10 powerful widget extensions that make your UI code clean, readable, and professional. 
 
 ---
 
