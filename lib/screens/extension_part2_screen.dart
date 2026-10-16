@@ -13,20 +13,28 @@ class ExtensionPart2Screen extends StatefulWidget {
 class _ExtensionPart2ScreenState extends State<ExtensionPart2Screen> {
   bool isVisible = true;
   final controller = TextEditingController();
+  late final VoidCallback _removeDebouncedListener;
 
   @override
   void initState() {
     super.initState();
-    controller.debounce(() {
-      debugPrint('Search: ${controller.text}');
+    _removeDebouncedListener = controller.addDebouncedListener(() {
+      debugPrint('Search: ${controller.trimmed}');
     });
+  }
+
+  @override
+  void dispose() {
+    _removeDebouncedListener();
+    controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Extensions — Part 2'),
+        title: Text(context.l10n.partTwoTitle),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -80,15 +88,14 @@ class _ExtensionPart2ScreenState extends State<ExtensionPart2Screen> {
               width: context.width * 0.8,
               height: context.height * 0.2,
               color: context.isDarkMode ? Colors.black : Colors.white,
-              child: Center(child: Text('Context Extension Example')),
+              child: Center(child: Text(context.l10n.contextExample)),
             ).paddingAll(16).card(),
 
             const SizedBox(height: 20),
 
             ElevatedButton(
-              onPressed: () =>
-                  context.showSnackBar('Profile saved successfully!'),
-              child: const Text('Show SnackBar'),
+              onPressed: () => context.showSnackBar(context.l10n.profileSaved),
+              child: Text(context.l10n.showSnackBar),
             ),
 
             const SizedBox(height: 20),

@@ -1,0 +1,11 @@
+{
+  "@@locale": "es",
+  "appTitle": "Extensiones de Flutter",
+  "partOne": "Extensiones, parte 1",
+  "partTwo": "Extensiones, parte 2",
+  "partThree": "Extensiones, parte 3",
+  "partTwoTitle": "Extensiones de Flutter — Parte 2",
+  "contextExample": "Ejemplo de extensión de contexto",
+  "showSnackBar": "Mostrar mensaje",
+  "profileSaved": "¡Perfil guardado correctamente!"
+}

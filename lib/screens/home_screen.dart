@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_extensions_demo/extensions/ex_part2.dart';
 
 import 'extension_part1_screen.dart';
 import 'extension_part2_screen.dart';
+import 'extension_part3_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,7 +12,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pro Flutter Extensions'),
+        title: Text(context.l10n.appTitle),
         centerTitle: true,
       ),
       body: Center(
@@ -19,16 +21,23 @@ class HomeScreen extends StatelessWidget {
           children: [
             ElevatedButton.icon(
               icon: const Icon(Icons.looks_one),
-              label: const Text('Extension Part 1'),
+              label: Text(context.l10n.partOne),
               onPressed: () =>
                   Navigator.pushNamed(context, ExtensionPart1Screen.routeName),
             ),
             const SizedBox(height: 20),
             ElevatedButton.icon(
               icon: const Icon(Icons.looks_two),
-              label: const Text('Extension Part 2'),
+              label: Text(context.l10n.partTwo),
               onPressed: () =>
                   Navigator.pushNamed(context, ExtensionPart2Screen.routeName),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton.icon(
+              icon: const Icon(Icons.looks_3),
+              label: Text(context.l10n.partThree),
+              onPressed: () =>
+                  Navigator.pushNamed(context, ExtensionPart3Screen.routeName),
             ),
           ],
         ),

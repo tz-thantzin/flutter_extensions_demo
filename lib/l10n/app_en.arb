@@ -1,0 +1,11 @@
+{
+  "@@locale": "en",
+  "appTitle": "Pro Flutter Extensions",
+  "partOne": "Extension Part 1",
+  "partTwo": "Extension Part 2",
+  "partThree": "Extension Part 3",
+  "partTwoTitle": "Flutter Extensions — Part 2",
+  "contextExample": "Context Extension Example",
+  "showSnackBar": "Show SnackBar",
+  "profileSaved": "Profile saved successfully!"
+}

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_extensions_demo/l10n/app_localizations.dart';
 
 /// 1️⃣ Tooltip Extension
 extension TooltipExtension on Widget {
@@ -15,19 +16,30 @@ extension ScrollableExtension on Widget {
 
 /// 3️⃣ TextStyle Fluent Extension
 extension TextStyleExtension on Text {
-  Text bold() => Text(
-    data ?? '',
-    style: (style ?? const TextStyle()).copyWith(fontWeight: FontWeight.bold),
+  Text bold() => _withStyle(
+    (style ?? const TextStyle()).copyWith(fontWeight: FontWeight.bold),
   );
 
-  Text color(Color color) => Text(
-    data ?? '',
-    style: (style ?? const TextStyle()).copyWith(color: color),
-  );
+  Text color(Color color) =>
+      _withStyle((style ?? const TextStyle()).copyWith(color: color));
 
-  Text size(double fontSize) => Text(
+  Text size(double fontSize) =>
+      _withStyle((style ?? const TextStyle()).copyWith(fontSize: fontSize));
+
+  Text _withStyle(TextStyle nextStyle) => Text(
     data ?? '',
-    style: (style ?? const TextStyle()).copyWith(fontSize: fontSize),
+    style: nextStyle,
+    strutStyle: strutStyle,
+    textAlign: textAlign,
+    textDirection: textDirection,
+    locale: locale,
+    softWrap: softWrap,
+    overflow: overflow,
+    maxLines: maxLines,
+    semanticsLabel: semanticsLabel,
+    textWidthBasis: textWidthBasis,
+    textHeightBehavior: textHeightBehavior,
+    selectionColor: selectionColor,
   );
 }
 
@@ -51,22 +63,31 @@ extension SafeAreaExtension on Widget {
 
 /// 6️⃣ Debounce for TextEditingController
 extension DebounceExtension on TextEditingController {
-  void debounce(
+  /// Adds a debounced listener and returns a callback that removes it.
+  VoidCallback addDebouncedListener(
     VoidCallback onChanged, {
     Duration duration = const Duration(milliseconds: 500),
   }) {
-    Timer? _debounce;
-    addListener(() {
-      _debounce?.cancel();
-      _debounce = Timer(duration, onChanged);
-    });
+    Timer? debounceTimer;
+    void listener() {
+      debounceTimer?.cancel();
+      debounceTimer = Timer(duration, onChanged);
+    }
+
+    addListener(listener);
+    return () {
+      removeListener(listener);
+      debounceTimer?.cancel();
+    };
   }
 }
 
 /// 7️⃣ BuildContext Extensions
 extension ContextExtension on BuildContext {
-  double get width => MediaQuery.of(this).size.width;
-  double get height => MediaQuery.of(this).size.height;
+  AppLocalizations get l10n => AppLocalizations.of(this)!;
+  Size get mediaSize => MediaQuery.sizeOf(this);
+  double get width => mediaSize.width;
+  double get height => mediaSize.height;
   bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
 }
 
@@ -89,7 +110,7 @@ extension TextControllerUtils on TextEditingController {
   bool get isNotEmpty => trimmed.isNotEmpty;
 
   bool get isEmail =>
-      RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(trimmed);
+      RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(trimmed);
 }
 
 /// 🔟 DateTime Utilities
